@@ -25,7 +25,7 @@ function createWindow() {
         slashes: true
     }))
     
-    //mainWindow.setKiosk(true)
+    mainWindow.setKiosk(true)
 
     // Open the DevTools.
     // mainWindow.webContents.openDevTools()
