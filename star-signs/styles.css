@@ -1,0 +1,107 @@
+html, body {
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.question {
+    
+    width: 1920px;
+    height: 1080px;
+    /* background-image: url('./assets/Zodiac/' var(--sign) '/' var(--sign) '_' var(--stage) '.png'); */
+    position: relative;
+}
+
+/* .question[sign="aquarius"] {
+    --sign:'AQUARIUS';
+    --stage:"01"
+} */
+
+.question .result {
+    position: absolute;
+    top: 345px;
+    left: 229px;
+}
+.question .result {
+    display: flex;
+}
+
+.question .result .icon {
+    width: 183px;
+    height: 183px;
+    flex: 1;
+}
+.question .result .icon::after {
+    color: white;
+    flex:1
+}
+.question .result[answer="correct"] .icon {
+    background-image: url(./assets/correct.png);
+}
+.question .result[answer="correct"] .icon::after {
+    content: "правилно";
+}
+.question .result[answer="incorrect"] .icon {
+    background-image: url(./assets/incorrect.png);
+}
+.question .result[answer="incorrect"] .icon::after {
+    content: "неправилно";
+}
+
+.question[sign="aquarius"][stage="1"] {
+    background-image: url(./assets/Zodiac/AQUARIUS/AQUARIUS_01.png);
+}
+.question[sign="aquarius"][stage="2"] {
+    background-image: url(./assets/Zodiac/AQUARIUS/AQUARIUS_02.png);
+}
+.question[sign="aquarius"][stage="3"] {
+    background-image: url(./assets/Zodiac/AQUARIUS/AQUARIUS_03.png);
+}
+.question[sign="aquarius"][stage="4"] {
+    background-image: url(./assets/Zodiac/AQUARIUS/AQUARIUS_04.png);
+}
+
+.question[sign="aries"][stage="1"] {
+    background-image: url(./assets/Zodiac/ARIES/ARIES_01.png);
+}
+.question[sign="aries"][stage="2"] {
+    background-image: url(./assets/Zodiac/ARIES/ARIES_02.png);
+}
+.question[sign="aries"][stage="3"] {
+    background-image: url(./assets/Zodiac/ARIES/ARIES_03.png);
+}
+.question[sign="aries"][stage="4"] {
+    background-image: url(./assets/Zodiac/ARIES/ARIES_04.png);
+}
+
+.question[sign="cancer"] {
+    background-image: url(./assets/Zodiac/CANCER/CANCER_01.png);
+}
+.question[sign="capricorn"] {
+    background-image: url(./assets/Zodiac/CAPRICORN/CAPRICORN_01.png);
+}
+.question[sign="gemini"] {
+    background-image: url(./assets/Zodiac/GEMINI/GEMINI_01.png);
+}
+.question[sign="leo"] {
+    background-image: url(./assets/Zodiac/LEO/LEO_01.png);
+}
+.question[sign="libra"] {
+    background-image: url(./assets/Zodiac/LIBRA/LIBRA_01.png);
+}
+.question[sign="pisces"] {
+    background-image: url(./assets/Zodiac/PISCES/PISCES_01.png);
+}
+.question[sign="sagittarius"] {
+    background-image: url(./assets/Zodiac/SAGITTARIUS/SAGITTARIUS_01.png);
+}
+.question[sign="scorpio"] {
+    background-image: url(./assets/Zodiac/SCORPIO/SCORPIO_01.png);
+}
+.question[sign="taurus"] {
+    background-image: url(./assets/Zodiac/TAURUS/TAURUS_01.png);
+}
+.question[sign="virgo"] {
+    background-image: url(./assets/Zodiac/VIRGO/VIRGO_01.png);
+}
