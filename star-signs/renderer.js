@@ -25,30 +25,81 @@ async function listSerialPorts() {
 }
 
 let sights = [
-  "aquarius",
   "aries",
-  "cancer",
-  "capricorn",
-  "gemini",
-  "leo",
-  "libra",
-  "pisces",
-  "sagittarius",
-  "scorpio",
   "taurus",
+  "gemini",
+  "cancer",
+  "leo",
   "virgo",
+  "libra",
+  "scorpius",
+  "sagittarius",
+  "capricornus",
+  "aquarius",
+  "pisces",
 ]
 
 let questionView = document.getElementById("question")
-let resultLabel = document.getElementById("result_label")
-let resultIcon = document.getElementById("result_icon")
+let result = document.getElementById("result")
 
-let randomElement = "aquarius"//sights[Math.random()*sights.length >> 0]
+let selectedElement = -1
+let stage = 1
 
+function selectElement() {
+  let next;
+  do {
+    next = sights[Math.random() * sights.length >> 0]
+  } while(next == selectElement)
+  console.log
 
-questionView.setAttribute("sign", randomElement)
-questionView.setAttribute("stage", 2)
+  selectedElement = next
 
+  updateQuestion()
+  updateResult(null)
+}
+
+selectElement()
+
+function updateResult(r) {
+    result.setAttribute("answer", r)
+
+    if(r == "correct") {
+      stage = 4
+    } else if (r == null) {
+      stage = 1
+    } else {
+      stage = Math.min(stage + 1, 4)
+    }
+
+    questionView.setAttribute("stage", stage)
+    
+    if(stage == 4) {
+      setTimeout(() => {
+        selectElement()
+      }, 5000)
+    }
+}
+
+function updateQuestion() {
+  questionView.setAttribute("sign", selectedElement)
+  questionView.setAttribute("stage", stage)
+}
+
+function checkElement(index) {
+  if(stage == 4) {
+    return
+  }
+
+  let choice = sights[index]
+
+  console.log(choice, selectedElement)
+
+  if(choice == selectedElement) {
+    updateResult("correct")
+  } else {
+    updateResult("incorrect")
+  }
+}
 /*
 const path = app.getPath("userData")
 // write file
@@ -68,7 +119,10 @@ const port = new SerialPort({
 })
 
 port.on('data', function (data) {
-  console.log('Data:', data.toString())
+  let r = data.toString()
+
+  console.log(`data: ${r}`)
+  checkElement(r)
 })
 
 // Open errors will be emitted as an error event
@@ -76,6 +130,18 @@ port.on('error', function(err) {
   console.log('Error: ', err.message)
 })
 
-//setTimeout(listPorts, 2000);
+document.addEventListener("keydown", (e) => {
+  if (!e.repeat) {
+    let k = e.key
+    if(/\d/.test(k)) {
+      console.log("---")
+      checkElement(k)
+    }
+    console.log(`Key "${e.key}" pressed [event: keydown]`);
+  } else {
+    console.log(`Key "${k}" repeating [event: keydown]`);
+  }
+});
 
-//listSerialPorts()
+
+listSerialPorts()
