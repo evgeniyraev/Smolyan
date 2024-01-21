@@ -1,10 +1,12 @@
 const { app, BrowserWindow } = require('electron')
 const path = require('path')
 const url = require('url')
+const { readFileSync } = require('fs');
 
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
 let mainWindow
+
 
 function createWindow() {
     // Create the browser window.
@@ -29,7 +31,7 @@ function createWindow() {
     mainWindow.setKiosk(true)
 
     // Open the DevTools.
-    // mainWindow.webContents.openDevTools()
+    mainWindow.webContents.openDevTools()
 
     // Emitted when the window is closed.
     mainWindow.on('closed', function() {
@@ -38,6 +40,20 @@ function createWindow() {
         // when you should delete the corresponding element.
         mainWindow = null
     })
+
+    mainWindow.webContents.on('did-finish-load', () => {
+        loadConfing()
+    });
+
+
+    // mainWindow.on()
+}
+
+function loadConfing() {
+    let file = path.join(app.getAppPath(), 'config.json')
+    var configFile = JSON.parse(readFileSync(file));
+
+    mainWindow.webContents.send('asynchronous-message', configFile);
 }
 
 // This method will be called when Electron has finished
