@@ -102,16 +102,19 @@
 
       elem.play()
 
+    }
+
       document.addEventListener("keydown", (e) => {
+          console.log(e.key)
         if (!e.repeat) {
           let k = e.key
-          if ( k="PageUp") {
-            
+          if (k=="PageUp") {
             openFullscreen("bg")
+          } else if(k=="PageDown") {
+            openFullscreen("en")
           }
         }
       });
-    }
   </script>
 
 </body>
