@@ -8,10 +8,11 @@
     body {
       padding: 0px;
       margin: 0px;
-    }
-
-    html {
       width: 100%;
+      height: 100%;
+
+      overflow: hidden;
+      background-color: black;
     }
 
     video {
@@ -104,17 +105,16 @@
 
     }
 
-      document.addEventListener("keydown", (e) => {
-          console.log(e.key)
-        if (!e.repeat) {
-          let k = e.key
-          if (k=="PageUp") {
-            openFullscreen("bg")
-          } else if(k=="PageDown") {
-            openFullscreen("en")
-          }
+    document.addEventListener("keydown", (e) => {
+      if (!e.repeat) {
+        let k = e.key
+        if (k == "PageUp") {
+          openFullscreen("bg")
+        } else if (k == "PageDown") {
+          openFullscreen("en")
         }
-      });
+      }
+    });
   </script>
 
 </body>
