@@ -1,16 +1,113 @@
 {
+    "timing":{
+        "end":5,
+        "screensaver":300
+    },
     "sights": [
-        "aries",
-        "taurus",
-        "gemini",
-        "cancer",
-        "leo",
-        "virgo",
-        "libra",
-        "scorpius",
-        "sagittarius",
-        "capricornus",
-        "aquarius",
-        "pisces"
-    ]
+        "LEO",
+        "CANCER",
+        "ANDROMEDA",
+        "ARIES",
+        "URSA MAJOR",
+        "VIRGO",
+        "CASSIOPEIA",
+        "ORION",
+        "TAURUS",
+        "GEMINI"
+    ],
+    "sights2":[
+        "CAPRICORN",
+        "SCORPIO",
+        "HERCULES",
+        "SAGITTARIUS",
+        "PEGASUS",
+        "LIBRA",
+        "AQUARIUS",
+        "LYRA",
+        "PISCES",
+        "CYGNUS"
+    ],
+    "names": {
+        "ANDROMEDA":{
+            "en":"Andromeda",
+            "bg":"Андромеда "
+        },
+        "AQUARIUS":{
+            "en":"Aquarius",
+            "bg":"Водолей"
+        },
+        "ARIES":{
+            "en":"Aries",
+            "bg":"Овен"
+        },
+        "CANCER":{
+            "en":"Cancer",
+            "bg":"Рак"
+        },
+        "CAPRICORN":{
+            "en":"Capricornus",
+            "bg":"Козирог"
+        },
+        "CASSIOPEIA":{
+            "en":"Cassiopeia",
+            "bg":"Касиопея "
+        },
+        "CYGNUS":{
+            "en":"Cygnus",
+            "bg":"Лебед"
+        },
+        "GEMINI":{
+            "en":"Gemini",
+            "bg":"Близнаци"
+        },
+        "HERCULES":{
+            "en":"Hercules",
+            "bg":"Херкулес"
+        },
+        "LEO":{
+            "en":"Leo",
+            "bg":"Лъв"
+        },
+        "LIBRA":{
+            "en":"Libra",
+            "bg":"Везни"
+        },
+        "LYRA":{
+            "en":"Lyra",
+            "bg":"Лира"
+        },
+        "ORION":{
+            "en":"Orion",
+            "bg":"Орион "
+        },
+        "PEGASUS":{
+            "en":"Pegasus",
+            "bg":"Пегас"
+        },
+        "PISCES":{
+            "en":"Pisces",
+            "bg":"Риби"
+        },
+        "SAGITTARIUS":{
+            "en":"Sagittarius",
+            "bg":"Стрелец"
+        },
+        "SCORPIO":{
+            "en":"Scorpius",
+            "bg":"Скорпион"
+        },
+        "TAURUS":{
+            "en":"Taurus",
+            "bg":"Телец"
+        },
+        "URSA MAJOR": {
+            "en": "Ursa Major",
+            "bg":"Голяма Мечка"
+        },
+        "VIRGO":{
+            "en":"Virgo",
+            "bg":"Дева "
+        }
+    }
+    
 }
