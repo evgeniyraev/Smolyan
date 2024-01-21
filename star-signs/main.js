@@ -45,7 +45,6 @@ function createWindow() {
         loadConfing()
     });
 
-
     // mainWindow.on()
 }
 

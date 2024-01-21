@@ -29,8 +29,6 @@ let sights = null
 let config = null
 
 ipcRenderer.on('asynchronous-message', function (evt, message) {
-  console.log("----- - - - - - -")
-
   config = message
   sights = message.sights
 
@@ -39,6 +37,8 @@ ipcRenderer.on('asynchronous-message', function (evt, message) {
 
 let questionView = document.getElementById("question")
 let result = document.getElementById("result")
+var correct = new Audio('./assets/correct.m4a');
+var incorrect = new Audio('./assets/incorrect.m4a');
 
 let selectedElement = -1
 let stage = 1
@@ -60,6 +60,12 @@ function selectElement() {
 function updateResult(r) {
     result.setAttribute("answer", r)
 
+      if (r == "correct") {
+        correct.play()
+      } else if (r == "incorrect") {
+        incorrect.play()
+      }
+
     if(r == "correct") {
       stage = 4
     } else if (r == null) {
@@ -73,7 +79,7 @@ function updateResult(r) {
     if(stage == 4) {
       setTimeout(() => {
         selectElement()
-      }, 5000)
+      }, config.timing.end*1000)
     }
 }
 
@@ -81,7 +87,8 @@ function updateQuestion() {
   let sign = selectedElement.toUpperCase()
   let pic = ("00" + stage).slice(-2)
 
-  let image = `url(./assets/Zodiac/${sign}/${sign}_${pic}.png)`
+  let image = `url('./assets/Constellations/${sign}/${sign}_${pic}.png')`
+  console.log(image)
 
   questionView.style.backgroundImage = image;
   
@@ -138,7 +145,6 @@ document.addEventListener("keydown", (e) => {
     if(/\d/.test(k)) {
       checkElement(k)
     }
-  } else {
   }
 });
 
