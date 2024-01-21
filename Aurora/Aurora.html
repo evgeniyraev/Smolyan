@@ -74,6 +74,8 @@
       } else {
         [en, bg].forEach(el => {
           el.style.display = "none"
+          el.pause();
+          el.currentTime = 0;
         })
       }
     }
@@ -111,6 +113,7 @@
           hideVideos()
           openFullscreen("bg")
         } else if (k == "PageDown") {
+          hideVideos()
           openFullscreen("en")
         }
       }
