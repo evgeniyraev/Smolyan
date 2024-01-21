@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    html, body {
+      padding: 0px;
+      margin: 0px;
+    }
+    html {
+      width: 100%;
+    }
+
+    video {
+      display: none;
+    }
+    body {
+      width: 100%;
+      aspect-ratio: calc(16/9);
+      /* height: 100%; */
+      background-image: url("./background.png");
+      background-repeat: no-repeat;
+      background-size: contain;
+      background-position: top left;
+    }
+
+    button {
+      width: 26%;
+      aspect-ratio: 1;
+      background-color: transparent;
+      border: none;
+    }
+
+    div.buttons {
+      width: 34%;
+      margin-left: 54%;
+      margin-top: 45%;
+    }
+    div.buttons button:nth-child(2) {
+      margin-left: 46%;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="buttons">
+    <button onclick="openFullscreen('bg');"></button>
+    <button onclick="openFullscreen('en');"></button>
+  </div>
+
+  <video width="100%" controls id="bgVideo">
+    <source src="bg.mp4" type="video/mp4">
+    Your browser does not support the video tag.
+  </video>
+  <video width="100%" controls id="enVideo">
+    <source src="en.mp4" type="video/mp4">
+    Your browser does not support the video tag.
+  </video>
+
+  <script>
+    /* Get the element you want displayed in fullscreen */
+    var bg = document.getElementById("bgVideo");
+    var en = document.getElementById("enVideo");
+
+    function hideVideos() {
+      if (document.fullscreenElement) {
+      } else {
+        [en, bg].forEach(el => {
+          el.style.display = "none"
+        })
+      }
+    }
+    [en, bg].forEach( el => {
+      el.addEventListener("fullscreenchange", (event) => {
+        hideVideos()
+      })
+    });
+
+    /* Function to open fullscreen mode */
+    function openFullscreen(type) {
+      let elem
+      if (type == "bg") {
+        elem = bg
+      } else {
+        elem = en
+      }
+      elem.style.display = "block"
+
+    if (elem.requestFullscreen) {
+      elem.requestFullscreen();
+    } else if (elem.webkitRequestFullscreen) { /* Safari */
+      elem.webkitRequestFullscreen();
+    } else if (elem.msRequestFullscreen) { /* IE11 */
+      elem.msRequestFullscreen();
+    }
+
+    elem.play()
+}
+  </script>
+
+</body>
+
+</html>
