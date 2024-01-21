@@ -14,6 +14,11 @@ body {
     overflow: hidden;
 }
 
+#name {
+    color: white;
+    font-size: 25px;
+}
+
 .question {
     
     width: 1920px;
