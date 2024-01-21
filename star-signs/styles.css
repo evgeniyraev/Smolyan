@@ -5,6 +5,9 @@ html, body {
     height: 100%;
 
     font-family: sans-serif;
+
+    background-color: black;
+    background-image: url(./assets/Zodiac/Zodiac_BG.png);
 }
 
 body {
@@ -15,7 +18,6 @@ body {
     
     width: 1920px;
     height: 1080px;
-    /* background-image: url('./assets/Zodiac/' var(--sign) '/' var(--sign) '_' var(--stage) '.png'); */
     position: relative;
 }
 
@@ -50,168 +52,12 @@ body {
 .question .result[answer="correct"] .icon {
     background-image: url(./assets/correct.png);
 }
-.question .result[answer="correct"] .icon::after {
+/* .question .result[answer="correct"] .icon::after {
     content: "правилно";
-}
+} */
 .question .result[answer="incorrect"] .icon {
     background-image: url(./assets/incorrect.png);
 }
-.question .result[answer="incorrect"] .icon::after {
+/* .question .result[answer="incorrect"] .icon::after {
     content: "неправилно";
-}
-
-.question[sign="aquarius"][stage="1"] {
-    background-image: url(./assets/Zodiac/AQUARIUS/AQUARIUS_01.png);
-}
-.question[sign="aquarius"][stage="2"] {
-    background-image: url(./assets/Zodiac/AQUARIUS/AQUARIUS_02.png);
-}
-.question[sign="aquarius"][stage="3"] {
-    background-image: url(./assets/Zodiac/AQUARIUS/AQUARIUS_03.png);
-}
-.question[sign="aquarius"][stage="4"] {
-    background-image: url(./assets/Zodiac/AQUARIUS/AQUARIUS_04.png);
-}
-
-.question[sign="aries"][stage="1"] {
-    background-image: url(./assets/Zodiac/ARIES/ARIES_01.png);
-}
-.question[sign="aries"][stage="2"] {
-    background-image: url(./assets/Zodiac/ARIES/ARIES_02.png);
-}
-.question[sign="aries"][stage="3"] {
-    background-image: url(./assets/Zodiac/ARIES/ARIES_03.png);
-}
-.question[sign="aries"][stage="4"] {
-    background-image: url(./assets/Zodiac/ARIES/ARIES_04.png);
-}
-
-.question[sign="cancer"][stage="1"] {
-    background-image: url(./assets/Zodiac/CANCER/CANCER_01.png);
-}
-.question[sign="cancer"][stage="2"] {
-    background-image: url(./assets/Zodiac/CANCER/CANCER_02.png);
-}
-.question[sign="cancer"][stage="3"] {
-    background-image: url(./assets/Zodiac/CANCER/CANCER_03.png);
-}
-.question[sign="cancer"][stage="4"] {
-    background-image: url(./assets/Zodiac/CANCER/CANCER_04.png);
-}
-
-.question[sign="capricornus"][stage="1"] {
-    background-image: url(./assets/Zodiac/CAPRICORN/CAPRICORN_01.png);
-}
-.question[sign="capricornus"][stage="2"] {
-    background-image: url(./assets/Zodiac/CAPRICORN/CAPRICORN_02.png);
-}
-.question[sign="capricornus"][stage="3"] {
-    background-image: url(./assets/Zodiac/CAPRICORN/CAPRICORN_03.png);
-}
-.question[sign="capricornus"][stage="4"] {
-    background-image: url(./assets/Zodiac/CAPRICORN/CAPRICORN_04.png);
-}
-
-.question[sign="gemini"][stage="1"] {
-    background-image: url(./assets/Zodiac/GEMINI/GEMINI_01.png);
-}
-.question[sign="gemini"][stage="2"] {
-    background-image: url(./assets/Zodiac/GEMINI/GEMINI_02.png);
-}
-.question[sign="gemini"][stage="3"] {
-    background-image: url(./assets/Zodiac/GEMINI/GEMINI_03.png);
-}
-.question[sign="gemini"][stage="4"] {
-    background-image: url(./assets/Zodiac/GEMINI/GEMINI_04.png);
-}
-
-.question[sign="leo"][stage="1"] {
-    background-image: url(./assets/Zodiac/LEO/LEO_01.png);
-}
-.question[sign="leo"][stage="2"] {
-    background-image: url(./assets/Zodiac/LEO/LEO_02.png);
-}
-.question[sign="leo"][stage="3"] {
-    background-image: url(./assets/Zodiac/LEO/LEO_03.png);
-}
-.question[sign="leo"][stage="4"] {
-    background-image: url(./assets/Zodiac/LEO/LEO_04.png);
-}
-
-.question[sign="libra"][stage="1"] {
-    background-image: url(./assets/Zodiac/LIBRA/LIBRA_01.png);
-}
-.question[sign="libra"][stage="2"] {
-    background-image: url(./assets/Zodiac/LIBRA/LIBRA_02.png);
-}
-.question[sign="libra"][stage="3"] {
-    background-image: url(./assets/Zodiac/LIBRA/LIBRA_03.png);
-}
-.question[sign="libra"][stage="4"] {
-    background-image: url(./assets/Zodiac/LIBRA/LIBRA_04.png);
-}
-
-.question[sign="pisces"][stage="1"] {
-    background-image: url(./assets/Zodiac/PISCES/PISCES_01.png);
-}
-.question[sign="pisces"][stage="2"] {
-    background-image: url(./assets/Zodiac/PISCES/PISCES_02.png);
-}
-.question[sign="pisces"][stage="3"] {
-    background-image: url(./assets/Zodiac/PISCES/PISCES_03.png);
-}
-.question[sign="pisces"][stage="4"] {
-    background-image: url(./assets/Zodiac/PISCES/PISCES_04.png);
-}
-
-.question[sign="sagittarius"][stage="1"] {
-    background-image: url(./assets/Zodiac/SAGITTARIUS/SAGITTARIUS_01.png);
-}
-.question[sign="sagittarius"][stage="2"] {
-    background-image: url(./assets/Zodiac/SAGITTARIUS/SAGITTARIUS_02.png);
-}
-.question[sign="sagittarius"][stage="3"] {
-    background-image: url(./assets/Zodiac/SAGITTARIUS/SAGITTARIUS_03.png);
-}
-.question[sign="sagittarius"][stage="4"] {
-    background-image: url(./assets/Zodiac/SAGITTARIUS/SAGITTARIUS_04.png);
-}
-
-.question[sign="scorpius"][stage="1"] {
-    background-image: url(./assets/Zodiac/SCORPIO/SCORPIO_01.png);
-}
-.question[sign="scorpius"][stage="2"] {
-    background-image: url(./assets/Zodiac/SCORPIO/SCORPIO_02.png);
-}
-.question[sign="scorpius"][stage="3"] {
-    background-image: url(./assets/Zodiac/SCORPIO/SCORPIO_03.png);
-}
-.question[sign="scorpius"][stage="4"] {
-    background-image: url(./assets/Zodiac/SCORPIO/SCORPIO_04.png);
-}
-
-.question[sign="taurus"][stage="1"] {
-    background-image: url(./assets/Zodiac/TAURUS/TAURUS_01.png);
-}
-.question[sign="taurus"][stage="2"] {
-    background-image: url(./assets/Zodiac/TAURUS/TAURUS_02.png);
-}
-.question[sign="taurus"][stage="3"] {
-    background-image: url(./assets/Zodiac/TAURUS/TAURUS_03.png);
-}
-.question[sign="taurus"][stage="4"] {
-    background-image: url(./assets/Zodiac/TAURUS/TAURUS_04.png);
-}
-
-.question[sign="virgo"][stage="1"] {
-    background-image: url(./assets/Zodiac/VIRGO/VIRGO_01.png);
-}
-.question[sign="virgo"][stage="2"] {
-    background-image: url(./assets/Zodiac/VIRGO/VIRGO_02.png);
-}
-.question[sign="virgo"][stage="3"] {
-    background-image: url(./assets/Zodiac/VIRGO/VIRGO_03.png);
-}
-.question[sign="virgo"][stage="4"] {
-    background-image: url(./assets/Zodiac/VIRGO/VIRGO_04.png);
-}
+} */
