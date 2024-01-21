@@ -37,6 +37,7 @@ ipcRenderer.on('asynchronous-message', function (evt, message) {
 
 let questionView = document.getElementById("question")
 let result = document.getElementById("result")
+let name = document.getElementById("name")
 var correct = new Audio('./assets/correct.m4a');
 var incorrect = new Audio('./assets/incorrect.m4a');
 
@@ -90,8 +91,18 @@ function updateQuestion() {
   let image = `url('./assets/Constellations/${sign}/${sign}_${pic}.png')`
   console.log(image)
 
+  for(var i = 0; i<name.children.length; i++) {
+    let el = name.children[i]
+    if (stage == 4) {
+      let lang = el.getAttribute("lang")
+      el.innerHTML = config.names[sign][lang]
+    } else {
+      el.innerHTML = ""
+    }
+
+  }
+
   questionView.style.backgroundImage = image;
-  
 }
 
 function checkElement(index) {
