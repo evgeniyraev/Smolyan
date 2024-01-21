@@ -26,8 +26,8 @@ body {
 
 .question .result {
     position: absolute;
-    top: 220px;
-    left: 179px;
+    top: 200px;
+    left: 159px;
 }
 .question .result {
     display: flex;

@@ -114,7 +114,8 @@ updateGlobalStore(JSON.parse(data))
 */
 
 const port = new SerialPort({
-  path: '/dev/tty.usbserial-2110',
+  //path: '/dev/tty.usbserial-2110',
+  path: 'COM4',
   baudRate: 115200,
 })
 
@@ -144,4 +145,4 @@ document.addEventListener("keydown", (e) => {
 });
 
 
-listSerialPorts()
+//listSerialPorts()
