@@ -4,6 +4,7 @@
 
 const { SerialPort } = require('serialport')
 const tableify = require('tableify')
+const { ipcRenderer } = require('electron')
 
 async function listSerialPorts() {
   await SerialPort.list().then((ports, err) => {
@@ -24,20 +25,17 @@ async function listSerialPorts() {
   })
 }
 
-let sights = [
-  "aries",
-  "taurus",
-  "gemini",
-  "cancer",
-  "leo",
-  "virgo",
-  "libra",
-  "scorpius",
-  "sagittarius",
-  "capricornus",
-  "aquarius",
-  "pisces",
-]
+let sights = null
+let config = null
+
+ipcRenderer.on('asynchronous-message', function (evt, message) {
+  console.log("----- - - - - - -")
+
+  config = message
+  sights = message.sights
+
+  selectElement()
+});
 
 let questionView = document.getElementById("question")
 let result = document.getElementById("result")
@@ -58,7 +56,6 @@ function selectElement() {
   updateResult(null)
 }
 
-selectElement()
 
 function updateResult(r) {
     result.setAttribute("answer", r)
@@ -71,7 +68,7 @@ function updateResult(r) {
       stage = Math.min(stage + 1, 4)
     }
 
-    questionView.setAttribute("stage", stage)
+    updateQuestion()
     
     if(stage == 4) {
       setTimeout(() => {
@@ -81,8 +78,13 @@ function updateResult(r) {
 }
 
 function updateQuestion() {
-  questionView.setAttribute("sign", selectedElement)
-  questionView.setAttribute("stage", stage)
+  let sign = selectedElement.toUpperCase()
+  let pic = ("00" + stage).slice(-2)
+
+  let image = `url(./assets/Zodiac/${sign}/${sign}_${pic}.png)`
+
+  questionView.style.backgroundImage = image;
+  
 }
 
 function checkElement(index) {
@@ -135,12 +137,9 @@ document.addEventListener("keydown", (e) => {
   if (!e.repeat) {
     let k = e.key
     if(/\d/.test(k)) {
-      console.log("---")
       checkElement(k)
     }
-    console.log(`Key "${e.key}" pressed [event: keydown]`);
   } else {
-    console.log(`Key "${k}" repeating [event: keydown]`);
   }
 });
 
