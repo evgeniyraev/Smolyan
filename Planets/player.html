@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        html,
+        body {
+            padding: 0px;
+            margin: 0px;
+        }
+
+        html {
+            width: 100%;
+        }
+
+        body {
+            /* background-color: black; */
+            width: 100vw;
+            height: 100vh;
+        }
+
+        div.container {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+        }
+
+        video {
+            width: 100%;
+            height: 100%;
+            background-color: black;
+        }
+    </style>
+</head>
+
+<body>
+
+    <video width="100%" controls id="theVideo">
+    </video>
+
+    <script>
+        const queryString = window.location.search;
+        const urlParams = new URLSearchParams(queryString);
+        const name = urlParams.get('video')
+        const lang = urlParams.get('language')
+
+        console.log(name, lang)
+        var video = document.getElementById("theVideo");
+        video.addEventListener("ended", (event) => {
+            window.close()
+        });
+
+
+        var source = document.createElement('source');
+        source.setAttribute('src', `./${lang}/${name}`);
+        source.setAttribute('type', 'video/mp4');
+
+        video.style.display = "block"
+        video.appendChild(source);
+        video.load()
+
+        if (video.requestFullscreen) {
+            video.requestFullscreen();
+        } else if (video.webkitRequestFullscreen) { /* Safari */
+            video.webkitRequestFullscreen();
+        } else if (video.msRequestFullscreen) { /* IE11 */
+            video.msRequestFullscreen();
+        }
+
+        video.play()
+    </script>
+
+</body>
+
+</html>

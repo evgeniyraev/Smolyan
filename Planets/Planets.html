@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    html,
+    body {
+      padding: 0px;
+      margin: 0px;
+    }
+
+    html {
+      width: 100%;
+    }
+
+    body {
+      position: relative;
+      width: 100%;
+      aspect-ratio: calc(16/9);
+      /* height: 100%; */
+      background-image: url("./bg/background.jpg");
+      background-repeat: no-repeat;
+      background-size: contain;
+      background-position: top left;
+    }
+
+    button {
+      border: none;
+      padding: 0px;
+      background-color: transparent;
+      /* opacity: 0.7; */
+    }
+
+    video {
+      display: none;
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background-color: black;
+      top: 0px;
+      left: 0px;
+    }
+
+    #language {
+      position: absolute;
+      top: 64.5%;
+      left: 87.5%;
+      opacity: 0.7;
+      width: 10%;
+      height: 7%;
+    }
+
+    button:nth-child(2n) {
+      /* background-color: orangered; */
+    }
+
+    button:nth-child(2n+1) {
+      /* background-color: yellowgreen; */
+    }
+
+    div.navigation {
+      position: absolute;
+      width: 100%;
+      display: flex;
+      /* margin-left: 2.43%; */
+      top: 77.5%;
+      justify-content: center;
+    }
+
+    div.big {
+      position: relative;
+      display: flex;
+      width: 100%;
+      height: 100%;
+    }
+
+    div.big button {
+      position: absolute;
+    }
+
+    div.big button.sun {
+      width: 13%;
+      aspect-ratio: 1;
+      top: 22%;
+      left: 43%;
+    }
+
+    div.big button.system {
+      width: 100%;
+      height: 72%;
+      /* background-color: blue; */
+    }
+
+    div.big button.planet {
+      aspect-ratio: 1;
+    }
+
+    div.big button.planet:nth-child(3) {
+      top: 24%;
+      left: 58%;
+      width: 3.5%;
+    }
+
+    div.big button.planet:nth-child(4) {
+      top: 31%;
+      left: 33%;
+      width: 4.5%;
+    }
+
+    div.big button.planet:nth-child(5) {
+      top: 29.5%;
+      left: 66%;
+      width: 5%;
+    }
+
+    div.big button.planet:nth-child(6) {
+      top: 45.5%;
+      left: 26.5%;
+      width: 4.5%;
+    }
+
+    div.big button.planet:nth-child(7) {
+      top: 9.5%;
+      left: 77.5%;
+      width: 7.5%;
+    }
+
+    div.big button.planet:nth-child(8) {
+      top: 36%;
+      left: 9.5%;
+      width: 7.5%;
+    }
+
+    div.big button.planet:nth-child(9) {
+      top: 25.5%;
+      left: 87%;
+      width: 6%;
+    }
+
+    div.big button.planet:nth-child(10) {
+      top: 56.5%;
+      left: 4.5%;
+      width: 6.5%;
+    }
+
+    div.navigation button {
+      /* width: 12.5%; */
+      width: 12.15%;
+      aspect-ratio: 1;
+      border: none;
+      padding: 0px;
+    }
+
+  </style>
+</head>
+
+<body>
+
+
+  <div class="big">
+    <button class="system" onclick="openFullscreen(0);"></button>
+    <button class="sun" onclick="openFullscreen(1);"></button>
+
+    <button class="planet" onclick="openFullscreen(2);"></button>
+    <button class="planet" onclick="openFullscreen(3);"></button>
+    <button class="planet" onclick="openFullscreen(4);"></button>
+    <button class="planet" onclick="openFullscreen(5);"></button>
+    <button class="planet" onclick="openFullscreen(6);"></button>
+    <button class="planet" onclick="openFullscreen(7);"></button>
+    <button class="planet" onclick="openFullscreen(8);"></button>
+    <button class="planet" onclick="openFullscreen(9);"></button>
+  </div>
+  <div class="navigation">
+    <button onclick="openFullscreen(2);"></button>
+    <button onclick="openFullscreen(3);"></button>
+    <button onclick="openFullscreen(4);"></button>
+    <button onclick="openFullscreen(5);"></button>
+    <button onclick="openFullscreen(6);"></button>
+    <button onclick="openFullscreen(7);"></button>
+    <button onclick="openFullscreen(8);"></button>
+    <button onclick="openFullscreen(9);"></button>
+  </div>
+  <button id="language" onclick="changeLanguage()"></button>
+
+  <video width="100%" controls id="theVideo">
+  </video>
+
+  <script>
+    var video = document.getElementById("theVideo");
+    let list = [
+      "1.mp4",
+      "2.mp4",
+      "3.mp4",
+      "4.mp4",
+      "5.mp4",
+      "6.mp4",
+      "7.mp4",
+      "8.mp4",
+      "9.mp4",
+      "10.mp4",
+    ]
+    let language = "bg"
+
+    video.addEventListener("fullscreenchange", (event) => {
+      hideVideos()
+    })
+    video.addEventListener("ended", (event) => {
+      if (document.fullscreenElement) {
+        if (document.exitFullscreen) {
+          document.exitFullscreen();
+        } else if (document.webkitExitFullscreen) { /* Safari */
+          document.webkitExitFullscreen();
+        } else if (document.msExitFullscreen) { /* IE11 */
+          document.msExitFullscreen();
+        }
+      } else {
+        clearVideo()
+      }
+    });
+    document.addEventListener("keydown", (event) => {
+      if (event.keyCode == 27) {
+        clearVideo()
+
+      }
+      console.log(event.keyCode)
+    })
+
+    function hideVideos() {
+      console.log("hiding the video")
+      if (document.fullscreenElement) {
+        console.log("there is full screen element")
+      } else {
+        console.log("no fullscreen video")
+        // el.removeChild(el.getE)
+        clearVideo()
+      }
+    }
+
+    function clearVideo() {
+      video.pause()
+      console.log("pause")
+      video.style.display = "none"
+      console.log("hiding video")
+      while (video.childElementCount > 0) {
+        video.removeChild(video.firstChild)
+      }
+      console.log("removed sources")
+    }
+
+    /* Function to open fullscreen mode */
+    function openFullscreen(type) {
+      console.log("playing video")
+      let name = list[type]
+
+      var source = document.createElement('source');
+      let path = `./${language}/${name}`
+      console.log(`choosen video path is: ${path}`)
+      source.setAttribute('src', path);
+      source.setAttribute('type', 'video/mp4');
+
+      video.style.display = "block"
+      video.appendChild(source);
+      video.load()
+
+      console.log("video loaded")
+
+      // if (video.requestFullscreen) {
+      //   video.requestFullscreen();
+      // } else if (video.webkitRequestFullscreen) { /* Safari */
+      //   video.webkitRequestFullscreen();
+      // } else if (video.msRequestFullscreen) { /* IE11 */
+      //   video.msRequestFullscreen();
+      // }
+
+      console.log("fillsreeen")
+
+      video.play()
+      console.log("play")
+      /*
+      window.open(
+        `./player.html?video=${name}&language=${language}`,
+        "player",
+        "_blank",
+        "directories=false,titlebar=false,toolbar=false,location=false,status=false,menubar=false,scrollbars=false,popup=true,width=320,height=320"
+      )
+      */
+    }
+
+    function changeLanguage() {
+      console.log("chaning language")
+      switch (language) {
+        case "bg":
+          language = "en";
+          break;
+        case "en":
+          language = "bg"
+          break;
+      }
+
+      console.log(`new language ${language}`)
+
+      let body = document.getElementsByTagName("body")[0]
+      body.style.backgroundImage = `url("${language}/background.jpg")`
+
+    }
+  </script>
+
+</body>
+
+</html>
