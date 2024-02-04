@@ -39,6 +39,15 @@ def main():
                 play_sound_thread(sound_file_en)
                 sleep(0.1)
 
+            elif keyboard.is_pressed("F5") or keyboard.is_pressed("Esc"):
+                print("unhadeled")
+                sleep(0.1)
+            
+            elif keyboard.is_pressed('space') or keyboard.is_pressed("."):
+                print("stopping")
+                stop_sound()
+                sleep(0.1)
+
         except KeyboardInterrupt:
             break
 
