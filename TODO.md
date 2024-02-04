@@ -1,9 +1,7 @@
 # Tasks
-- [ ] backup code (git remote)
-- [ ] remote login
-- [ ] find start poin
+- [ ] find start point
 - [ ] end in current moon position
+    - [ ] fined current moon phase
 - [ ] moon phases
 - [ ] connect to wifi
     - [ ] copy from previos pi
-- [ ]  
