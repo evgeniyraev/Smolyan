@@ -8,6 +8,11 @@ uninstall:
 	sudo systemctl disable moon.service
 	sudo rm /etc/systemd/system/moon.service
 
+listen:
+	sudo journalctl -f -u moon.service
+reload:
+	sudo systemctl daemon-reload
+
 .PHONY: install uninstall
 
 
