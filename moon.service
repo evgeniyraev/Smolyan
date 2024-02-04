@@ -1,0 +1,14 @@
+[Unit]
+Description=Moon Service
+After=multi-user.target
+
+[Service]
+#Environment=XDG_RUNTIME_DIR=/run/user/1000
+Environment=PYTHONUNBUFFERED=1
+Type=simple
+ExecStart=/usr/bin/python /home/moon/service/moon.py
+WorkingDirectory=/home/moon/service
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
