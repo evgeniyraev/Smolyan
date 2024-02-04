@@ -4,6 +4,8 @@ from time import sleep
 import pygame
 import keyboard
 import threading
+import signal
+import sys
 
 def set_audio_output():
     pygame.mixer.init()
@@ -50,6 +52,12 @@ def main():
 
         except KeyboardInterrupt:
             break
+
+def signal_term_handler(signal, frame):
+    print('got SIGTERM')
+    sys.exit(0)
+
+signal.signal(signal.SIGTERM, signal_term_handler)
 
 if __name__ == "__main__":
     main()

@@ -13,6 +13,8 @@ listen:
 	sudo journalctl -f -u moon.service
 reload:
 	sudo systemctl daemon-reload
+	sudo systemctl stop moon.service
+	sudo systemctl start moon.service
 
 .PHONY: install uninstall
 
