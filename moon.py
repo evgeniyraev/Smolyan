@@ -6,6 +6,7 @@ import keyboard
 import threading
 import signal
 import sys
+from motorControl import *
 
 def set_audio_output():
     pygame.mixer.init()
@@ -33,12 +34,14 @@ def main():
                 print("starting bg, page down")
                 stop_sound()
                 play_sound_thread(sound_file_bg)
+                rotate()
                 sleep(0.1)
 
             elif keyboard.is_pressed('Page_Up'):
                 print("starting en, page up")
                 stop_sound()
                 play_sound_thread(sound_file_en)
+                rotate()
                 sleep(0.1)
 
             elif keyboard.is_pressed("F5") or keyboard.is_pressed("Esc"):
