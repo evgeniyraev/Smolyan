@@ -1,6 +1,6 @@
 install:
-	sudo cp /asound.conf /etc/asound.conf
-	sudo cp moon.service /etc/systemd/system/
+	sudo cp ./asound.conf /etc/asound.conf
+	sudo cp ./moon.service /etc/systemd/system/
 	sudo systemctl daemon-reload
 	sudo systemctl enable moon.service
 	sudo systemctl start moon.service
