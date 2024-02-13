@@ -16,7 +16,6 @@ delay = .010
 def rotate():
     print( "starting rotation")
     
-    
     step_count = SPR
     
 

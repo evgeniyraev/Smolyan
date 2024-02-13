@@ -6,7 +6,9 @@ import keyboard
 import threading
 import signal
 import sys
-from motorControl import *
+#from motorControl import *
+from mockMottor import *
+from webControll import start_web_intergace
 
 def set_audio_output():
     pygame.mixer.init()
@@ -14,16 +16,25 @@ def set_audio_output():
 def play_sound(file_path):
     pygame.mixer.music.load(file_path)
     pygame.mixer.music.play()
+    cw() 
+    
+    while True:
+        if pygame.mixer.music.get_busy() == False and isRotating() == True:
+            stop_rotation()
+            break
 
 def stop_sound():
     pygame.mixer.music.stop()
 
 def play_sound_thread(file_path):
     thread = threading.Thread(target=play_sound, args=(file_path,))
+    thread.deamon = True
     thread.start()
 
 def main():
     pygame.mixer.init()
+    #start_web_intergace()
+    listen()
 
     sound_file_bg = "/home/moon/service/moon_bg.mp3" 
     sound_file_en = "/home/moon/service/moon_en.mp3"
@@ -34,14 +45,12 @@ def main():
                 print("starting bg, page down")
                 stop_sound()
                 play_sound_thread(sound_file_bg)
-                rotate()
                 sleep(0.1)
 
             elif keyboard.is_pressed('Page_Up'):
                 print("starting en, page up")
                 stop_sound()
                 play_sound_thread(sound_file_en)
-                rotate()
                 sleep(0.1)
 
             elif keyboard.is_pressed("F5") or keyboard.is_pressed("Esc"):
@@ -51,7 +60,9 @@ def main():
             elif keyboard.is_pressed('space') or keyboard.is_pressed("."):
                 print("stopping")
                 stop_sound()
+                #stop_rotation()
                 sleep(0.1)
+
 
         except KeyboardInterrupt:
             break

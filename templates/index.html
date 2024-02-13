@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Arrow Control</title>
+</head>
+<body>
+    <h1>Arrow Control</h1>
+    <form action="/start" method="post">
+        <input type="radio" name="direction" value="clockwise">Clockwise
+        <input type="radio" name="direction" value="counterclockwise">Counterclockwise
+        <button type="submit">Start</button>
+    </form>
+    <form action="/stop" method="post">
+        <button type="submit">Stop</button>
+    </form>
+    <form action="/setposition" method="post">
+        <input type="number" name="position" placeholder="Position">
+        <button type="submit">Set Position</button>
+    </form>
+    <form action="/setspeed" method="post">
+        <input type="number" name="speed" placeholder="Speed">
+        <button type="submit">Set Speed</button>
+    </form>
+</body>
+</html>
+
+
