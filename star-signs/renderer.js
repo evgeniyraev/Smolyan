@@ -40,6 +40,8 @@ let result = document.getElementById("result")
 let name = document.getElementById("name")
 var correct = new Audio('./assets/correct.m4a');
 var incorrect = new Audio('./assets/incorrect.m4a');
+var screensaver = document.getElementById("screensaver");
+var screensaverTimer
 
 let selectedElement = -1
 let stage = 1
@@ -55,6 +57,7 @@ function selectElement() {
 
   updateQuestion()
   updateResult(null)
+  hideScreensaver()
 }
 
 
@@ -106,7 +109,9 @@ function updateQuestion() {
 }
 
 function checkElement(index) {
-  if(stage == 4) {
+  hideScreensaver()
+
+  if(stage == -1 || stage == 4) {
     return
   }
 
@@ -119,6 +124,27 @@ function checkElement(index) {
   } else {
     updateResult("incorrect")
   }
+}
+
+function hideScreensaver() {
+  if (stage == -1) {
+    screensaver.style.display = "none"
+    screensaver.pause();
+    screensaver.currentTime = 0;
+    stage = 0
+  }
+
+  if(screensaverTimer) {
+    window.clearTimeout(screensaverTimer);
+  }
+  screensaverTimer = window.setTimeout(showScreenSaver, config.timing.screensaver * 1000)
+  
+}
+
+function showScreenSaver() {
+  stage = -1
+  screensaver.style.display = "block"
+  screensaver.play()
 }
 /*
 const path = app.getPath("userData")
