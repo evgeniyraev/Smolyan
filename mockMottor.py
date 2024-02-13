@@ -5,11 +5,12 @@ import RPi.GPIO as GPIO
 DIR = 16   # Direction GPIO Pin - Blue 
 STEP = 21  # Step GPIO Pin - Green
 ENABLE = 20  # Step GPIO Pin - Yellow
+LED = 17 # Controll led stip 
 
 CW = 1     # Clockwise Rotation - the moon rotation
 CCW = 0    # Counterclockwise Rotation
 
-delay = .010
+delay = .005
 
 global shouldRotate, direction
 shouldRotate = False
@@ -34,6 +35,7 @@ def ccw():
     
     GPIO.output(DIR, CCW)
     GPIO.output(ENABLE, GPIO.HIGH)
+    GPIO.output(LED, GPIO.LOW)
     shouldRotate = True
 
 def stop_rotation():
@@ -51,6 +53,8 @@ def step():
     GPIO.setup(DIR, GPIO.OUT)
     GPIO.setup(STEP, GPIO.OUT)
     GPIO.setup(ENABLE, GPIO.OUT)
+    GPIO.setup(LED, GPIO.OUT)
+    GPIO.output(LED, GPIO.HIGH)
 
     while True:
         if shouldRotate:
@@ -67,6 +71,7 @@ def step():
 
         elif GPIO.input(ENABLE):
             GPIO.output(ENABLE, GPIO.LOW)
+            GPIO.output(LED, GPIO.HIGH)
 
 def step_tread():
     thread = threading.Thread(target=step)
