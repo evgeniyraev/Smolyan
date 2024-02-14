@@ -18,23 +18,35 @@ def play_sound(file_path):
     pygame.mixer.music.play()
     cw() 
     
-    while True:
-        if pygame.mixer.music.get_busy() == False and isRotating() == True:
-            stop_rotation()
-            break
 
 def stop_sound():
     pygame.mixer.music.stop()
+    #stop_rotation()
+
+def listen_end_sound():
+    while True:
+        if pygame.mixer.music.get_busy() == False and isRotating() == True:
+            stop_rotation()
+            sleep(0.1)
+
+def listen_end_sound_thead():
+    thread = threading.Thread(target=listen_end_sound)
+    thread.deamon = True
+    thread.start()
 
 def play_sound_thread(file_path):
     thread = threading.Thread(target=play_sound, args=(file_path,))
     thread.deamon = True
     thread.start()
+    
+    
+
 
 def main():
     pygame.mixer.init()
     #start_web_intergace()
     listen()
+    listen_end_sound_thead()
 
     sound_file_bg = "/home/moon/service/moon_bg.mp3" 
     sound_file_en = "/home/moon/service/moon_en.mp3"
