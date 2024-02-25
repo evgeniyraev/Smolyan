@@ -27,6 +27,7 @@ def cw():
     
     GPIO.output(DIR, CW)
     GPIO.output(ENABLE, GPIO.HIGH)
+    GPIO.output(LED, GPIO.LOW)
     shouldRotate = True
 
 def ccw():
@@ -41,6 +42,7 @@ def ccw():
 def stop_rotation():
     print("stopping rotation")
     global shouldRotate
+    GPIO.output(LED, GPIO.HIGH)
     shouldRotate = False
 
 def isRotating():
