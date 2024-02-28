@@ -16,6 +16,7 @@ def set_audio_output():
 def play_sound(file_path):
     pygame.mixer.music.load(file_path)
     pygame.mixer.music.play()
+    pygame.mixer.music.set_volume(3.2)
     cw() 
     
 

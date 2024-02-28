@@ -10,7 +10,7 @@ LED = 17 # Controll led stip
 CW = 1     # Clockwise Rotation - the moon rotation
 CCW = 0    # Counterclockwise Rotation
 
-delay = .005
+delay = .003
 
 global shouldRotate, direction
 shouldRotate = False
@@ -74,6 +74,7 @@ def step():
         elif GPIO.input(ENABLE):
             GPIO.output(ENABLE, GPIO.LOW)
             GPIO.output(LED, GPIO.HIGH)
+            sleep(delay*2)
 
 def step_tread():
     thread = threading.Thread(target=step)
